@@ -6,7 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity //anotacao jpa para mapear entidade/uma tabela do nosso db
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity        //anotacao jpa para mapear entidade/uma tabela do nosso db
+@Data         //para add getters setters equals e hashCode
+@Builder      //para construir objetos de forma segura
+@NoArgsConstructor
+@AllArgsConstructor
 public class Author {
 	
 	@Id //primary-key
