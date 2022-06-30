@@ -7,3 +7,10 @@ Project deployed on [Heroku](https://bookstore-manager-raquel.herokuapp.com/)
 
 ## DB Model
 ![](EntityRelationshipModelDB.png)
+
+## Endpoints Test - Insomnia
+
+# POST - CREATE NEW BOOK
+
+![](PostSaveBook)
+
