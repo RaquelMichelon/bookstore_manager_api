@@ -12,5 +12,5 @@ Project deployed on [Heroku](https://bookstore-manager-raquel.herokuapp.com/)
 
 # POST - CREATE NEW BOOK
 
-![](PostSaveBook)
+![](PostSaveBook.png)
 
