@@ -8,30 +8,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.raquelmichelon.bookstore.dto.MessageResponseDTO;
 import com.raquelmichelon.bookstore.entities.Book;
-import com.raquelmichelon.bookstore.repositories.BookRepository;
+import com.raquelmichelon.bookstore.service.BookService;
 
 @RestController
 @RequestMapping("/api/v1/books")
 public class BookController {
-	
-	//metodo que fara o cadastro de livros
-	
-	private BookRepository bookRepository;
+		
+	//troquei bookRepository por bookService
+	private BookService bookService;
 	
 	//criar construtor com anotacao
 	@Autowired
-	public BookController(BookRepository bookRepository) {
-		this.bookRepository = bookRepository;
+	public BookController(BookService bookService) {
+		this.bookService = bookService;
 	}
 	
 	
 	@PostMapping()
 	public MessageResponseDTO create(@RequestBody Book book) {
-		Book savedBook = bookRepository.save(book);
-		
-		//msg para confirmar criacao do objeto
-		return MessageResponseDTO.builder().message("Book created with ID " + savedBook.getId()).build();
+		//delegar esse metodo de cadastro de livros para a classe service
+		return bookService.create(book);
 	}
+
 
 
 }
