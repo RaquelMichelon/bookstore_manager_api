@@ -1,13 +1,15 @@
 package com.raquelmichelon.bookstore.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.raquelmichelon.bookstore.dto.BookDTO;
 import com.raquelmichelon.bookstore.dto.MessageResponseDTO;
-import com.raquelmichelon.bookstore.entities.Book;
 import com.raquelmichelon.bookstore.service.BookService;
 
 @RestController
@@ -17,7 +19,7 @@ public class BookController {
 	//troquei bookRepository por bookService
 	private BookService bookService;
 	
-	//criar construtor com anotacao
+	//criar construtor com anotacao para injeção de dependência 
 	@Autowired
 	public BookController(BookService bookService) {
 		this.bookService = bookService;
@@ -25,9 +27,11 @@ public class BookController {
 	
 	
 	@PostMapping()
-	public MessageResponseDTO create(@RequestBody Book book) {
-		//delegar esse metodo de cadastro de livros para a classe service
-		return bookService.create(book);
+	//alter args para a classe DTO
+	//anotation Valid para fazer a validacao correta dos dados de entrada
+	public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO) {
+		//delegar esse metodo de cadastro de livros para a classe service que eh especifica para regras de negocio
+		return bookService.create(bookDTO);
 	}
 
 	
