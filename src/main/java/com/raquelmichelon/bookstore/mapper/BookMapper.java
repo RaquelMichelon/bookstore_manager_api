@@ -6,7 +6,7 @@ import org.mapstruct.factory.Mappers;
 import com.raquelmichelon.bookstore.dto.BookDTO;
 import com.raquelmichelon.bookstore.entities.Book;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface BookMapper {
 	
 	//para instanciar o mapper dentro da interface e a interface ser criada atraves de uma unica constante

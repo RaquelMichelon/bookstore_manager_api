@@ -22,7 +22,6 @@ public class AuthorDTO {
 	private String name;
 	
 	@NotNull //Bean Validation
-	@Size(max = 100) ////Bean Validation
 	private Integer age;
 
 }
