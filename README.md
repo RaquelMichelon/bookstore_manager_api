@@ -16,13 +16,13 @@ Project deployed on [Heroku](https://bookstore-manager-raquel.herokuapp.com/)
 
 ![](PostSaveBook.png)
 
-- Heroku Request
+- Request to https://bookstore-manager-raquel.herokuapp.com/api/v1/books
 
 ### GET - Find Book By ID
 
 - Local Request
 
-![](.png)
+![](Find1.png)
 
 - Heroku Request
 

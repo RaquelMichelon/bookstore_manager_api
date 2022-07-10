@@ -1,5 +1,7 @@
 package com.raquelmichelon.bookstore.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,11 @@ public class BookService {
 		
 		//msg para confirmar criacao do objeto
 		return MessageResponseDTO.builder().message("Book created with ID " + savedBook.getId()).build();
+	}
+
+	public BookDTO findById(Long id) {
+		Optional<Book> optionalBook = bookRepository.findById(id);
+		return bookMapper.toDTO(optionalBook.get());
 	}
 
 }
