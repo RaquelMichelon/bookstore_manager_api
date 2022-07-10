@@ -38,7 +38,7 @@ public class BookService {
 		return MessageResponseDTO.builder().message("Book created with ID " + savedBook.getId()).build();
 	}
 	
-	//como o metodo orElseThrow() lanca uma excecao, precisa declarar essa excecao na assinatura do metodo
+	//como o metodo orElseThrow() lanca uma excecao, precisa declarar essa excecao na assinatura do metodo 
 	public BookDTO findById(Long id) throws BookNotFoundException {
 		Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
 		return bookMapper.toDTO(book);
