@@ -1,13 +1,12 @@
 package com.raquelmichelon.bookstore.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.raquelmichelon.bookstore.dto.BookDTO;
 import com.raquelmichelon.bookstore.dto.MessageResponseDTO;
 import com.raquelmichelon.bookstore.entities.Book;
+import com.raquelmichelon.bookstore.exception.BookNotFoundException;
 import com.raquelmichelon.bookstore.mapper.BookMapper;
 import com.raquelmichelon.bookstore.repositories.BookRepository;
 
@@ -38,10 +37,11 @@ public class BookService {
 		//msg para confirmar criacao do objeto
 		return MessageResponseDTO.builder().message("Book created with ID " + savedBook.getId()).build();
 	}
-
-	public BookDTO findById(Long id) {
-		Optional<Book> optionalBook = bookRepository.findById(id);
-		return bookMapper.toDTO(optionalBook.get());
+	
+	//como o metodo orElseThrow() lanca uma excecao, precisa declarar essa excecao na assinatura do metodo
+	public BookDTO findById(Long id) throws BookNotFoundException {
+		Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
+		return bookMapper.toDTO(book);
 	}
 
 }

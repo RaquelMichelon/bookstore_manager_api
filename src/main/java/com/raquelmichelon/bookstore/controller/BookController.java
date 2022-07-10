@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.raquelmichelon.bookstore.dto.BookDTO;
 import com.raquelmichelon.bookstore.dto.MessageResponseDTO;
+import com.raquelmichelon.bookstore.exception.BookNotFoundException;
 import com.raquelmichelon.bookstore.service.BookService;
 
 @RestController
@@ -38,7 +39,7 @@ public class BookController {
 	
 	
 	@GetMapping("/{id}")
-	public BookDTO findByID(@PathVariable Long id) {
+	public BookDTO findByID(@PathVariable Long id) throws BookNotFoundException {
 		return bookService.findById(id);
 	}
 
