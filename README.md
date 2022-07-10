@@ -52,12 +52,6 @@ Later, open this in order to visualize the project running:
 http://localhost:8080/api/v1/books
 ```
 
-To open the documentation (Swagger 2) acess the link below:
-
-```
-http://localhost:8080/api/v1/books/swagger-ui.html
-```
-
 
 Mininum requirement to run the project:
 
